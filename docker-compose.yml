@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  server:
+    image: "node:18.14.0-alpine3.17"
+    user: "${USER_ID:-1000}:${GROUP_ID:-1000}"
+    working_dir: "/var/project/app"
+    environment:
+      - PORT=${PORT:-3000}
+      - API_R_SPACEX
+    ports:
+      - "${PORT:-3000}:${PORT:-3000}"
+    volumes:
+      - ".:/var/project/app"
+      - ${NPM_CACHE:-cache-npm}:/home/${USER_ID:-1000}/.npm
+    command: "npm start"
+
+volumes:
+  cache-npm:
+    name: cache-npm
+    external: true
