@@ -71,7 +71,8 @@ export class LaunchesRSpaceXRepository implements LaunchesRepository
             !(
                 typeof data == 'object' &&
                 data.hasOwnProperty('name') && 
-                data.hasOwnProperty('date_utc')
+                data.hasOwnProperty('date_utc') && 
+                data.hasOwnProperty('id')
             )
         ) {
             throw new Error('Invalid data')
@@ -80,7 +81,8 @@ export class LaunchesRSpaceXRepository implements LaunchesRepository
 
         return new Launch(
             data.name,
-            new Date(data.date_utc)
+            new Date(data.date_utc),
+            data.id
         )
     }
 }
