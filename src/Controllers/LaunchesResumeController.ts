@@ -25,9 +25,9 @@ export class LaunchesResumeController
                 const launchNext = launchesUpcoming.pop()
 
                 response.json({
-                    latest: launchesPast,
+                    latest: launchLatest,
                     next: launchNext,
-                    past: launchLatest,
+                    past: launchesPast,
                     upcoming: launchesUpcoming,
                 })
             }
